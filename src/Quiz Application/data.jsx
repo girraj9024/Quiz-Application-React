@@ -11,7 +11,7 @@ export const data = [
   },
   {
     question: "2+2*2",
-    answer: 8,
+    answer: 6,
     options: [6, 7, 8, 10],
   },
   {
