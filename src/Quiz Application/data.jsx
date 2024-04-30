@@ -20,8 +20,10 @@ export const data = [
     options: [1, 0, 2, 4],
   },
   {
-    question: "4*4*4",
-    answer: 64,
-    options: [12, 444, 64, 62],
+    // question: "https://badrinath-kedarnath.gov.in/Assets/image/k3.jpg",
+    question: <img src="src/Quiz Application/kedarnat dham.jpg" alt=""/>,
+    // question: "what is place",
+    answer: "kedarnath",
+    options: ["kedarnath", "Badrinath", "Dwarka", "Rameswaram"],
   },
 ];

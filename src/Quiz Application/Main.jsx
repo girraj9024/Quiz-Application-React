@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { data } from "./data";
-
+import "./App.css";
 
 function shuffleArray(array) {
-  // Fisher-Yates shuffle algorithm
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -16,14 +15,12 @@ function Main() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [userAnswers, setUserAnswers] = useState(Array(data.length).fill(''));
-  const [timeLeft, setTimeLeft] = useState(5); // Initial time left
+  const [timeLeft, setTimeLeft] = useState(5); 
 
-  // Shuffle the data array when component mounts
   useEffect(() => {
     shuffleData();
   }, []);
 
-  // Function to shuffle data array
   function shuffleData() {
     const shuffledData = shuffleArray(data);
     setQuestionNumber(0);
@@ -31,10 +28,9 @@ function Main() {
     setShowScore(false);
   }
 
-  // Function to calculate score
   function calculateScore() {
     let score = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length -1; i++) {
       if (userAnswers[i] === data[i].answer) {
         score++;
       }
@@ -42,28 +38,24 @@ function Main() {
     return score;
   }
 
-  // useEffect to handle timer and display score at the end
   useEffect(() => {
-    // Set interval to update timer every second
     const timer = setInterval(() => {
       if (timeLeft > 0) {
         setTimeLeft(timeLeft - 1);
       } else {
         if (questionNumber < data.length - 1) {
-          setQuestionNumber(questionNumber + 1); // Move to the next question
-          setTimeLeft(5); // Reset the timer for the next question
+          setQuestionNumber(questionNumber + 1); 
+          setTimeLeft(5); 
         } else {
-          clearInterval(timer); // Stop the timer
-          setShowScore(true); // Show the total score
+          clearInterval(timer);
+          setShowScore(true);
         }
       }
     }, 1000);
 
-    // Clean up the interval when component unmounts or question changes
     return () => clearInterval(timer);
   }, [timeLeft, questionNumber]);
 
-  // Function to handle option selection
   function handleOptionSelect(option) {
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[questionNumber] = option;
@@ -71,7 +63,6 @@ function Main() {
     setSelectedOption(option);
   }
 
-  // useEffect to clear the previously selected option when question changes
   useEffect(() => {
     setSelectedOption('');
   }, [questionNumber]);
@@ -109,4 +100,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Main;  
