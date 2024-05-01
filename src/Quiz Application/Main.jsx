@@ -15,7 +15,7 @@ function Main() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [userAnswers, setUserAnswers] = useState(Array(data.length).fill(''));
-  const [timeLeft, setTimeLeft] = useState(5); 
+  const [timeLeft, setTimeLeft] = useState(4); 
 
   useEffect(() => {
     shuffleData();
@@ -30,9 +30,18 @@ function Main() {
 
   function calculateScore() {
     let score = 0;
-    for (let i = 0; i < data.length -1; i++) {
-      if (userAnswers[i] === data[i].answer) {
-        score++;
+    for (let i = 0; i < data.length; i++) {
+      if (typeof data[i].answer === 'string') {
+        if (userAnswers[i] === data[i].answer) {
+          score++;
+          console.log(score)
+        }
+      } else if (typeof data[i].answer === 'object' && data[i].answer.type === 'img') {
+        if (userAnswers[i].props.src === data[i].answer.props.src) {
+          score++;
+        }
+      } else {
+        console.log("yadav");
       }
     }
     return score;
@@ -100,4 +109,4 @@ function Main() {
   );
 }
 
-export default Main;  
+export default Main;
