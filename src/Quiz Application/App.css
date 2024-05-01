@@ -100,3 +100,38 @@ input{
   color: black;
   font-size: 30px;
 }
+.inpmain{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.names{
+  width: 150px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: rgba(0, 128, 0, 0.418);
+  color: black;
+  margin-right: 30px;
+}
+.start{
+  width: 130px;
+  height: 30px;
+  padding: 7px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: rgba(0, 128, 0, 0.308);
+  color: black;
+  margin-right: 30px;
+}
+.question-container{
+  width: 200px;
+  height: 200px;
+}
+.question-container img{
+  width: 200px;
+  height: 200px;
+}
