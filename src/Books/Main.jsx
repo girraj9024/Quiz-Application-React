@@ -8,7 +8,7 @@ function Main() {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            try {
+            
                 const urls = [
                     "https://openlibrary.org/subjects/thriller.json?details=true",
                     "https://openlibrary.org/subjects/love.json?details=true",
@@ -20,9 +20,7 @@ function Main() {
                 const results = await Promise.all(responses.map(response => response.json()));
 
                 setBooksBySubjects(results);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
+            
         };
 
         fetchBooks();
