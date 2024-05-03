@@ -4,8 +4,42 @@
     box-sizing: border-box;
     /* display: none; */
 }
-.book-wrapper{
+.ssmain{
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
+}
+.hmain {
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    padding-left: 50px;
+    font-size: 40px;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+.image img{
+    width: 200px;
+    height: 300px;
+}
+.booktaetal{
+    width: 200px;
+    height: 45px;
+    font-size: 20px;
+}
+#search {
+    width: 200px;
+    height: 20px;
+    padding: 12px 5px;
+    margin: 3px;
+    position: fixed;
+    right: 30px;
+    border-radius: 10px;
+    top: 10px;
 }
