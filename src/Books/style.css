@@ -4,7 +4,7 @@
     box-sizing: border-box;
     /* display: none; */
 }
-.ssmain{
+.main{
     width: 100%;
     height: 100%;
     display: flex;
@@ -15,8 +15,6 @@
 .hmain {
     width: 100%;
     height: 100%;
-    /* background-color: red; */
-    padding-left: 50px;
     font-size: 40px;
 }
 .image{
@@ -33,13 +31,14 @@
     height: 45px;
     font-size: 20px;
 }
+.book-wrapper{
+    border: solid black 2px;
+    margin: 4px;
+    padding: 5px;
+}
 #search {
-    width: 200px;
-    height: 20px;
-    padding: 12px 5px;
-    margin: 3px;
     position: fixed;
-    right: 30px;
-    border-radius: 10px;
+    right: 10px;
     top: 10px;
+    /* border-radius: 10px; */
 }
