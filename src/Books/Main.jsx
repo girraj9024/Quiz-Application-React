@@ -12,11 +12,14 @@ function Main() {
                 if (searchTerm.trim() === '') {
                     setSearchResults([]);
                 } else {
+                    // Construct the search URL with the "q" parameter for the query
                     const searchUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm)}`;
 
+                    // Fetch data from the search URL
                     const response = await fetch(searchUrl);
                     const result = await response.json();
 
+                    // Update the search results state with the fetched data
                     setSearchResults(result.docs);
                 }
             } catch (error) {
@@ -46,16 +49,26 @@ function Main() {
             }
         };
 
-        fetchBooksBySubjects();
-    }, []);
+        // Fetch books by subjects only if there's no search term
+        if (searchTerm.trim() === '') {
+            fetchBooksBySubjects();
+        }
+    }, [searchTerm]);
 
+    // Function to handle search input change
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
     return (
         <>
-            <div id="search"><input type="text" placeholder="Search by book title" value={searchTerm} onChange={handleSearchChange} />
+            <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search by book title"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
             </div>
             {searchResults.map((book, index) => (
                 <div className="book-wrapper" key={index}>
@@ -66,19 +79,18 @@ function Main() {
                     </div>
                 </div>
             ))}
-            {booksBySubjects.map((subject, index) => (
-                <div className='hmain' key={index}>
-                    <h3 className='smain'>{subject.name}</h3>
-                    <div className="main">
+            {/* Display books by subjects only if there's no search term */}
+            {searchTerm.trim() === '' && booksBySubjects.map((subject, index) => (
+                <div key={index}>
+                    <h3>{subject.name}</h3>
                     {subject.works.map((bookInfo, index) => (
                         <div className="book-wrapper" key={index}>
-                            <h3 className='booktaetal'>{bookInfo.title}</h3>
+                            <h3>{bookInfo.title}</h3>
                             <div className="image">
                                 {bookInfo.cover_id && <img src={`http://covers.openlibrary.org/b/id/${bookInfo.cover_id}-M.jpg`} alt={bookInfo.title} />}
                             </div>
                         </div>
                     ))}
-                    </div>
                 </div>
             ))}
         </>
